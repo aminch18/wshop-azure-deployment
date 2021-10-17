@@ -1,0 +1,1 @@
+# wshop-azure-deployment
