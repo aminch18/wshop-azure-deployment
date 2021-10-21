@@ -109,7 +109,7 @@ jobs:
           dotnet tool install --global dotnet-ef --version ${{ env.ENTITY_FW_CORE_VERSION }}
           dotnet tool restore
           dotnet ef database update 20211021230816_InitialCreate --connection ${{ secrets.CONNECTION_STRING }}
-        working-directory: Migrations
+        working-directory: ${{ env.CODE_FOLDER }}
       
       - name: Deploy to Azure WebApp 🚀
         uses: azure/webapps-deploy@v2
@@ -142,7 +142,7 @@ jobs:
           dotnet tool install --global dotnet-ef --version ${{ env.ENTITY_FW_CORE_VERSION }}
           dotnet tool restore
           dotnet ef database update 20211021230816_InitialCreate --connection ${{ secrets.CONNECTION_STRING }}
-        working-directory: Migrations
+        working-directory: ${{ env.CODE_FOLDER }}
 
       - name: Deploy to Azure WebApp 🚀
         uses: azure/webapps-deploy@v2
@@ -175,7 +175,7 @@ jobs:
           dotnet tool install --global dotnet-ef --version ${{ env.ENTITY_FW_CORE_VERSION }}
           dotnet tool restore
           dotnet ef database update 20211021230816_InitialCreate --connection ${{ secrets.CONNECTION_STRING }}
-        working-directory: Migrations
+        working-directory: ${{ env.CODE_FOLDER }}
 
       - name: Deploy to Azure WebApp🚀
         id: deploy_production
