@@ -33,7 +33,9 @@ jobs:
           terraform_version: 1.0.9
 
       - name: Terraform Init
-        run:  terraform init -upgrade
+        run:  |
+          cd terraform
+          terraform init -upgrade
 
       - name: Terraform Plan🔧
         run: terraform plan
