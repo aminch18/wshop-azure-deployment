@@ -66,18 +66,18 @@ jobs:
     needs: build
     name: Deploy Infrastructure
     runs-on: ubuntu-latest
+    
     steps:
       - name: Azure Login 🔐
         run: az login --service-principal -u ${{ env.ARM_CLIENT_ID }} -p ${{ env.ARM_CLIENT_SECRET }} --tenant ${{ env.ARM_TENANT_ID }}
-
+        
       - uses: hashicorp/setup-terraform@v1
         with:
           terraform_version: 1.0.9
 
       - name: Terraform Init
-        run:  |
-          cd terraform
-          terraform init -upgrade
+        run:  terraform init -upgrade
+        working-directory: ./terraform
 
       - name: Terraform Plan🔧
         run:  |
