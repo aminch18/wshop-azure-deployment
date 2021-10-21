@@ -53,7 +53,7 @@ jobs:
         run: |
           dotnet tool install --global dotnet-ef --version {{ env.ENTITY_FW_CORE_VERSION }}
           dotnet tool restore
-          dotnet ef migrations script --output ${{PROJECT_PATH}}/sql/sql-script.sql --idempotent --context TodosDbContext
+          dotnet ef migrations script --output ${{env.PROJECT_PATH}}/sql/sql-script.sql --idempotent --context TodosDbContext
 
       - name: Publish Artifacts ⬆
         uses: actions/upload-artifact@v1
