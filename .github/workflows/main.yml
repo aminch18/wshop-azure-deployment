@@ -51,7 +51,7 @@ jobs:
 
       - name: Generate Database Scripts
         run: |
-          dotnet tool install --global dotnet-ef --version {{ env.ENTITY_FW_CORE_VERSION }}
+          dotnet tool install --global dotnet-ef --version ${{ env.ENTITY_FW_CORE_VERSION }}
           dotnet tool restore
           dotnet ef migrations script --output ${{env.PROJECT_PATH}}/sql/sql-script.sql --idempotent --context TodosDbContext
 
