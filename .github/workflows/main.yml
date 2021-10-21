@@ -112,15 +112,8 @@ jobs:
           dotnet new tool-manifest
           dotnet tool install --global dotnet-ef --version ${{ env.ENTITY_FW_CORE_VERSION }}
           dotnet tool restore
-          dotnet ef database update InitialCreate --connection
+          dotnet ef database update 20211021230816_InitialCreate --connection
         working-directory: Migrations
-
-      - name: Azure SQL Deploy
-        uses: Azure/sql-action@v1
-        with:
-          server-name: ${{ secrets.SERVER_NAME }}
-          connection-string: ${{ secrets.CONNECTION_STRING }}
-          sql-file: ${{ env.CODE_FOLDER }}/sql-script.sql
       
       - name: Deploy to Azure WebApp 🚀
         uses: azure/webapps-deploy@v2
@@ -179,12 +172,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
 
-      - name: Azure SQL Deploy
-        uses: Azure/sql-action@v1
-        with:
-          server-name: ${{ secrets.SERVER_NAME }}
-          connection-string: ${{ secrets.CONNECTION_STRING }}
-          sql-file: ${{ env.CODE_FOLDER }}/sql-script.sql
+      - name: EFCore Migrations
+        run: |
+          dotnet new tool-manifest
+          dotnet tool install --global dotnet-ef --version ${{ env.ENTITY_FW_CORE_VERSION }}
+          dotnet tool restore
+          dotnet ef database update 20211021230816_InitialCreate --connection
+        working-directory: Migrations
 
       - name: Deploy to Azure WebApp🚀
         id: deploy_production
