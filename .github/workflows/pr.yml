@@ -38,9 +38,11 @@ jobs:
           terraform init -upgrade
 
       - name: Terraform Plan🔧
+        id: plan
         run:  |
           cd terraform
           terraform plan
+        continue-on-error: true
 
       - uses: actions/github-script@0.9.0
         if: github.event_name == 'pull_request'
@@ -72,7 +74,7 @@ jobs:
             })
 
       - name: Azure Logout 🔐
-        run: az login --service-principal -u ${{ secrets.CLIENT_ID }} -p ${{ secrets.CLIENT_SECRET }} --tenant ${{ secrets.TENANT_ID }}
+        run: az logout
 
   build:
     needs: terraform
