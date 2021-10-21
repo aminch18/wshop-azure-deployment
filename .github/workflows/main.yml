@@ -31,7 +31,7 @@ jobs:
           persist-credentials: false
       
       - name: Setup dotnet ${{ env.DOTNET_VERSION }}
-        - uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v1
           with:
             dotnet-version: ${{ env.DOTNET_VERSION }}
             include-prerelease: true
@@ -161,7 +161,7 @@ jobs:
           server-name: ${{ secrets.SERVER_NAME }}
           connection-string: ${{ secrets.CONNECTION_STRING }}
           sql-file: ${{PROJECT_PATH}}/sql/sql-script.sql
-          
+
       - name: Deploy to Azure WebApp🚀
         id: deploy_production
         uses: azure/webapps-deploy@v2
