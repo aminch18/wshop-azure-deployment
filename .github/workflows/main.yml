@@ -103,7 +103,7 @@ jobs:
         with:
           server-name: ${{ secrets.SERVER_NAME }}
           connection-string: ${{ secrets.CONNECTION_STRING }}
-          sql-file: ${{PROJECT_PATH}}/sql/sql-script.sql
+          sql-file: ${{ env.PROJECT_PATH }}/sql/sql-script.sql
       
       - name: Deploy to Azure WebApp 🚀
         uses: azure/webapps-deploy@v2
@@ -132,7 +132,7 @@ jobs:
         with:
           server-name: ${{ secrets.SERVER_NAME }}
           connection-string: ${{ secrets.CONNECTION_STRING }}
-          sql-file: ${{PROJECT_PATH}}/sql/sql-script.sql
+          sql-file: ${{ env.PROJECT_PATH }}/sql/sql-script.sql
 
       - name: Deploy to Azure WebApp 🚀
         uses: azure/webapps-deploy@v2
@@ -161,7 +161,7 @@ jobs:
         with:
           server-name: ${{ secrets.SERVER_NAME }}
           connection-string: ${{ secrets.CONNECTION_STRING }}
-          sql-file: ${{PROJECT_PATH}}/sql/sql-script.sql
+          sql-file: ${{ env.PROJECT_PATH }}/sql/sql-script.sql
 
       - name: Deploy to Azure WebApp🚀
         id: deploy_production
