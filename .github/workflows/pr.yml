@@ -10,14 +10,12 @@ env:
   ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
   ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
   ARM_SKIP_PROVIDER_REGISTRATION: true
+  ENTITY_FW_CORE_VERSION: 6.0.0-rc.2.21480.5
   AZURE_WEBAPP_NAME: todos-api
+  AZURE_WEBAPP_PACKAGE_PATH: ./app
   PROJECT_PATH: src/RestApi/RestApi.csproj
-  PACKAGE_PATH: ./build
-  AZURE_WEBAPP_PACKAGE_PATH: ${{ github.workspace }}/react-webapp
   DOTNET_VERSION: '6.0.x'
-  ARTIFACT_NAME: webapp
-  DEV_SLOT_NAME: dev
-  STG_SLOT_NAME: staging
+
 
 jobs:
   terraform:
@@ -86,11 +84,11 @@ jobs:
           dotnet-version: ${{ env.DOTNET_VERSION }}
            include-prerelease: true
 
-      - name: Install dependencies 🔧
-        run: dotnet restore
+      - name: Restore packages 🔧
+        run: dotnet restore "${{ env.PROJECT_PATH }}"
 
-      - name: Build 🔧
-        run: dotnet build
+      - name: Build app 🔧
+        run: dotnet build "${{ env.PROJECT_PATH }}" --configuration ${{ env.CONFIGURATION }} --no-restore
 
-      - name: Test with the dotnet CLI ❌⚠✅
-        run: dotnet test
+      - name: Test app
+        run: dotnet test "${{ env.PROJECT_PATH }}" --no-build

@@ -14,7 +14,7 @@ env:
   ENTITY_FW_CORE_VERSION: 6.0.0-rc.2.21480.5
   AZURE_WEBAPP_NAME: todos-api
   AZURE_WEBAPP_PACKAGE_PATH: ./app
-  PROJECT_PATH: ./src/RestApi/RestApi.csproj
+  PROJECT_PATH: src/RestApi/RestApi.csproj
   CONFIGURATION: Release
   DOTNET_VERSION: '6.0.x'
   ARTIFACT_NAME: webapp
