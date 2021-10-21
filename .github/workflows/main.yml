@@ -75,20 +75,20 @@ jobs:
         with:
           terraform_version: 1.0.9
 
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.3.1
+
       - name: Terraform Init
         run:  terraform init -upgrade
-        working-directory: ./terraform
+        working-directory: terraform
 
       - name: Terraform Plan🔧
-        run:  |
-          cd terraform
-          terraform plan
+        run: terraform plan
+        working-directory: terraform
 
       - name: Terraform Apply🏭
-        run:  |
-          cd terraform
-          terraform apply -auto-approve
-
+        run: terraform apply -auto-approve
+        working-directory: terraform
       - name: Azure Logout 🔐
         run: az logout
 
