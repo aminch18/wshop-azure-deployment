@@ -108,7 +108,7 @@ jobs:
           dotnet new tool-manifest
           dotnet tool install --global dotnet-ef --version ${{ env.ENTITY_FW_CORE_VERSION }}
           dotnet tool restore
-          dotnet ef database update 20211021230816_InitialCreate --connection ${{ secrets.CONNECTION_STRING }}
+          dotnet ef database update 20211021230816_InitialCreate --connection ${{ secrets.CONNECTION_STRING }} --force
         working-directory: ${{ env.CODE_FOLDER }}
       
       - name: Deploy to Azure WebApp 🚀
@@ -141,7 +141,7 @@ jobs:
           dotnet new tool-manifest
           dotnet tool install --global dotnet-ef --version ${{ env.ENTITY_FW_CORE_VERSION }}
           dotnet tool restore
-          dotnet ef database update 20211021230816_InitialCreate --connection ${{ secrets.CONNECTION_STRING }}
+          dotnet ef database update 20211021230816_InitialCreate --connection ${{ secrets.CONNECTION_STRING }} --force
         working-directory: ${{ env.CODE_FOLDER }}
 
       - name: Deploy to Azure WebApp 🚀
@@ -174,7 +174,7 @@ jobs:
           dotnet new tool-manifest
           dotnet tool install --global dotnet-ef --version ${{ env.ENTITY_FW_CORE_VERSION }}
           dotnet tool restore
-          dotnet ef database update 20211021230816_InitialCreate --connection ${{ secrets.CONNECTION_STRING }}
+          dotnet ef database update 20211021230816_InitialCreate --connection ${{ secrets.CONNECTION_STRING }} --force
         working-directory: ${{ env.CODE_FOLDER }}
 
       - name: Deploy to Azure WebApp🚀
