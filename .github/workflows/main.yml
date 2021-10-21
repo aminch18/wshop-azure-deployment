@@ -1,5 +1,6 @@
 name: CI/CD
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -32,9 +33,9 @@ jobs:
       
       - name: Setup dotnet ${{ env.DOTNET_VERSION }}
         uses: actions/setup-dotnet@v1
-          with:
-            dotnet-version: ${{ env.DOTNET_VERSION }}
-            include-prerelease: true
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+          include-prerelease: true
 
       - name: Restore packages 🔧
         run: dotnet restore "${{ env.PROJECT_PATH }}"
