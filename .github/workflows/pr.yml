@@ -15,7 +15,7 @@ env:
   AZURE_WEBAPP_PACKAGE_PATH: ./app
   PROJECT_PATH: src/RestApi/RestApi.csproj
   DOTNET_VERSION: '6.0.x'
-
+  CONFIGURATION: Release
 
 jobs:
   terraform:
