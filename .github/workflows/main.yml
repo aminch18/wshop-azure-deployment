@@ -15,6 +15,7 @@ env:
   AZURE_WEBAPP_NAME: todos-api
   AZURE_WEBAPP_PACKAGE_PATH: ./app
   PROJECT_PATH: src/RestApi/RestApi.csproj
+  CODE_FOLDER: src/RestApi
   CONFIGURATION: Release
   DOTNET_VERSION: '6.0.x'
   ARTIFACT_NAME: webapp
@@ -111,7 +112,7 @@ jobs:
         with:
           server-name: ${{ secrets.SERVER_NAME }}
           connection-string: ${{ secrets.CONNECTION_STRING }}
-          sql-file: ${{ env.PROJECT_PATH }}/sql/sql-script.sql
+          sql-file: ${{ env.CODE_FOLDER }}/sql-script.sql
       
       - name: Deploy to Azure WebApp 🚀
         uses: azure/webapps-deploy@v2
@@ -140,7 +141,7 @@ jobs:
         with:
           server-name: ${{ secrets.SERVER_NAME }}
           connection-string: ${{ secrets.CONNECTION_STRING }}
-          sql-file: ${{ env.PROJECT_PATH }}/sql/sql-script.sql
+          sql-file: ${{ env.CODE_FOLDER }}/sql-script.sql
 
       - name: Deploy to Azure WebApp 🚀
         uses: azure/webapps-deploy@v2
@@ -169,7 +170,7 @@ jobs:
         with:
           server-name: ${{ secrets.SERVER_NAME }}
           connection-string: ${{ secrets.CONNECTION_STRING }}
-          sql-file: ${{ env.PROJECT_PATH }}/sql/sql-script.sql
+          sql-file: ${{ env.CODE_FOLDER }}/sql-script.sql
 
       - name: Deploy to Azure WebApp🚀
         id: deploy_production
