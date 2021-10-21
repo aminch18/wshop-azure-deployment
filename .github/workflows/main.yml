@@ -50,11 +50,8 @@ jobs:
       - name: Publish app for deploy
         run: dotnet publish "${{ env.PROJECT_PATH }}" --configuration ${{ env.CONFIGURATION }} --no-build --output "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}"
 
-      - name: Generate Database Scripts
-        run: |
-          dotnet new tool-manifest
-          dotnet tool install --global dotnet-ef --version ${{ env.ENTITY_FW_CORE_VERSION }}
-          dotnet tool restore
+     
+          --connection
           dotnet ef migrations script --output sql/sql-script.sql --idempotent --context TodosDbContext --project ${{env.PROJECT_PATH}}
 
       - name: Publish Artifacts ⬆
@@ -109,6 +106,14 @@ jobs:
 
       - name: "Checkout"
         uses: actions/checkout@master
+
+      - name: EFCore Migrations
+        run: |
+          dotnet new tool-manifest
+          dotnet tool install --global dotnet-ef --version ${{ env.ENTITY_FW_CORE_VERSION }}
+          dotnet tool restore
+          dotnet ef database update InitialCreate --connection
+        working-directory: Migrations
 
       - name: Azure SQL Deploy
         uses: Azure/sql-action@v1
