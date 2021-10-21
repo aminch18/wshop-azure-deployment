@@ -107,6 +107,9 @@ jobs:
         with:
           name: ${{ env.ARTIFACT_NAME }}
 
+      - name: "Checkout"
+        uses: actions/checkout@master
+
       - name: Azure SQL Deploy
         uses: Azure/sql-action@v1
         with:
@@ -136,6 +139,9 @@ jobs:
         with:
           name: ${{ env.ARTIFACT_NAME }}
 
+      - name: "Checkout"
+        uses: actions/checkout@master
+
       - name: Azure SQL Deploy
         uses: Azure/sql-action@v1
         with:
@@ -164,6 +170,9 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: ${{ env.ARTIFACT_NAME }}
+
+      - name: Checkout
+        uses: actions/checkout@master
 
       - name: Azure SQL Deploy
         uses: Azure/sql-action@v1
