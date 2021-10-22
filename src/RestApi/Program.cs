@@ -3,7 +3,8 @@ using RestApi.TodosModule;
 using RestApi.TodosModule.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.AddSerilog();
+builder.AddSerilog(); 
+builder.Services.AddCors();
 builder.AddSwagger();
 builder.AddSqlPersistence();
 
@@ -13,7 +14,8 @@ var environment = app.Environment;
 app
     .UseExceptionHandling(environment)
     .UseSwaggerEndpoints()
-    .UseHttpsRedirection();
+    .UseHttpsRedirection()
+    .UseAppCors();
 
 app.MapGet("/api/home", (HttpResponse res) =>
 {
