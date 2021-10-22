@@ -5,8 +5,8 @@
     2 Az App Service Slots
 
 # Service Principal Creation
-az ad sp create-for-rbac --name "{sp-name}" --sdk-auth --role contributor \
-    --scopes /subscriptions/{subscription-id}/resourceGroups/{resource-group}
+    az ad sp create-for-rbac --name "{sp-name}" --sdk-auth --role contributor \
+        --scopes /subscriptions/{subscription-id}/resourceGroups/{resource-group}
 
 ## Workflows:
     Pull request: pr.yml
@@ -39,43 +39,44 @@ az ad sp create-for-rbac --name "{sp-name}" --sdk-auth --role contributor \
 ## Things you will need for terraform:
 
 #### Personal TfState
-{
-    "version": 3,
-    "serial": 1,
-    "lineage": "7d2ef47a-92dd-c78e-7ebf-0d1eee9b4c92",
-    "backend": {
-        "type": "azurerm",
-        "config": {
-            "access_key": null,
-            "client_certificate_password": null,
-            "client_certificate_path": null,
-            "client_id": null,
-            "client_secret": null,
-            "container_name": "tf-backend",
-            "endpoint": null,
-            "environment": null,
-            "key": "{personal-tfstate-file-name}", // ONLY NEED TO CHANGE THIS VALUE
-            "metadata_host": null,
-            "msi_endpoint": null,
-            "resource_group_name": "GithubActions-Trainning-Tf-Dev",
-            "sas_token": null,
-            "snapshot": null,
-            "storage_account_name": "tfbackend024356d",
-            "subscription_id": null,
-            "tenant_id": null,
-            "use_azuread_auth": null,
-            "use_msi": null
+    {
+        "version": 3,
+        "serial": 1,
+        "lineage": "7d2ef47a-92dd-c78e-7ebf-0d1eee9b4c92",
+        "backend": {
+            "type": "azurerm",
+            "config": {
+                "access_key": null,
+                "client_certificate_password": null,
+                "client_certificate_path": null,
+                "client_id": null,
+                "client_secret": null,
+                "container_name": "tf-backend",
+                "endpoint": null,
+                "environment": null,
+                "key": "{personal-tfstate-file-name}", // ONLY NEED TO CHANGE THIS VALUE
+                "metadata_host": null,
+                "msi_endpoint": null,
+                "resource_group_name": "GithubActions-Trainning-Tf-Dev",
+                "sas_token": null,
+                "snapshot": null,
+                "storage_account_name": "tfbackend024356d",
+                "subscription_id": null,
+                "tenant_id": null,
+                "use_azuread_auth": null,
+                "use_msi": null
+            },
+            "hash": 2164717722
         },
-        "hash": 2164717722
-    },
-    "modules": [
-        {
-            "path": [
-                "root"
-            ],
-            "outputs": {},
-            "resources": {},
-            "depends_on": []
-        }
-    ]
-}
+        "modules": [
+            {
+                "path": [
+                    "root"
+                ],
+                "outputs": {},
+                "resources": {},
+                "depends_on": []
+            }
+        ]
+    }
+    

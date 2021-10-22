@@ -1,6 +1,7 @@
 namespace Microsoft.Extensions.DependencyInjection;
 
 using Microsoft.OpenApi.Models;
+using RestApi;
 
 public static partial class ServiceCollectionExtensions
 {
@@ -27,6 +28,7 @@ public static partial class ServiceCollectionExtensions
                     Url = new Uri("https://github.com/aminch18")
                 }
             });
+            c.DocumentFilter<CustomDocumentFilter>();
         });
 
         return services;

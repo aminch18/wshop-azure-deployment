@@ -49,7 +49,7 @@ app.MapGet("api/todo/{id}", async (http) =>
     await http.Response.WriteAsJsonAsync(todoItem);
 });
 
-app.MapPost("api/todo", async (http) =>
+app.MapPost("api/todo/create/{id}", async (http) =>
 {
     var todoItem = await http.Request.ReadFromJsonAsync<Todo>();
     var dbContext = http.RequestServices.GetService<TodosDbContext>();
@@ -58,7 +58,7 @@ app.MapPost("api/todo", async (http) =>
     http.Response.StatusCode = 204;
 });
 
-app.MapPut("api/todo/{id}", async (http) =>
+app.MapPut("api/todo/mark-as-completed/{id}", async (http) =>
 {
     if (!http.Request.RouteValues.TryGetValue("id", out var id))
     {
@@ -80,7 +80,7 @@ app.MapPut("api/todo/{id}", async (http) =>
     http.Response.StatusCode = 204;
 });
 
-app.MapDelete("api/todo/{id}", async (http) =>
+app.MapDelete("api/todo/delete/{id}", async (http) =>
 {
     if (!http.Request.RouteValues.TryGetValue("id", out var id))
     {
