@@ -14,6 +14,7 @@ env:
   ENTITY_FW_CORE_VERSION: 6.0.0-rc.2.21480.5
   AZURE_WEBAPP_NAME: todoapi-webapp-
   AZURE_WEBAPP_PACKAGE_PATH: app
+  ARTIFACT_LOCATION: ${{ github.workspace }}/webapp
   PROJECT_PATH: src/RestApi/RestApi.csproj
   CODE_FOLDER: src/RestApi
   CONFIGURATION: Release
@@ -106,7 +107,7 @@ jobs:
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}dev
           publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
-          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+          package: ${{ env.ARTIFACT_LOCATION }}
 
   staging:
     needs: dev
@@ -130,7 +131,7 @@ jobs:
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}stg
           publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
-          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+          package: ${{ env.ARTIFACT_LOCATION }}
 
   deploy:
     needs: staging
@@ -154,4 +155,4 @@ jobs:
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
-          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+          package: ${{ env.ARTIFACT_LOCATION }}
