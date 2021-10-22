@@ -43,7 +43,6 @@ namespace RestApi
                 }
             });
 
-            // adding response to operation
             operation.Responses.Add("200", response);
             operation.Responses.Add("204", response);
             operation.Responses.Add("404", response);

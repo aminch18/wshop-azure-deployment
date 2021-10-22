@@ -4,7 +4,6 @@ using Microsoft.Extensions.Hosting;
 
 internal static partial class ApplicationBuilderExtensions
 {
-
     /// <summary>
     /// Register exception handling.
     /// </summary>
