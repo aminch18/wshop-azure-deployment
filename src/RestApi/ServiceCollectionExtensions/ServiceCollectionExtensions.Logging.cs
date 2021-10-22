@@ -7,6 +7,7 @@ using Serilog.Sinks.SpectreConsole;
 
 public static partial class ServiceCollectionExtensions
 {
+
     public static WebApplicationBuilder AddSerilog(this WebApplicationBuilder builder)
     {
         string outputTemplate = "{Timestamp:HH:mm:ss} [{Level:u4}] {Message:lj}{NewLine}{Exception}";
