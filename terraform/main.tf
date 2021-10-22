@@ -25,6 +25,7 @@ resource "azurerm_app_service" "webapp" {
   app_settings = {
       DataBaseConnectionString = "${local.sql_connection_strings_map[each.key]}"
       WEBSITE_WEBDEPLOY_USE_SCM = true
+      AllowedHosts: "*",
   }
 
   site_config {
