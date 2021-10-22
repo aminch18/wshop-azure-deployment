@@ -100,17 +100,6 @@ jobs:
         with:
           name: ${{ env.ARTIFACT_NAME }}
 
-      - name: "Checkout"
-        uses: actions/checkout@master
-
-      - name: EFCore Migrations
-        run: |
-          dotnet new tool-manifest
-          dotnet tool install dotnet-ef --version 6.0.0-preview.7.21378.4
-          dotnet ef migrations bundle
-          ./bundle --connection ${{ secrets.CONNECTION_STRING }}
-        working-directory: ${{ env.CODE_FOLDER }}
-      
       - name: Deploy to Azure WebApp 🚀
         uses: azure/webapps-deploy@v2
         id: deploy_dev
